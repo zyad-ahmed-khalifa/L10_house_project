@@ -1,0 +1,218 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+section{
+    .container{
+        .header{
+            &.special{
+                h2{
+                    color: white;
+                    &::after{
+                        background-color: white;
+                    }
+                }
+            }
+            h2{
+                color: $orange-color;
+                position: relative;
+                width: fit-content;
+                &::after{
+                    content: "";
+                    display: block;
+                    width: 35%;
+                    height: 5px;
+                    background-color: $orange-color;
+                    @include position(bottom, left, -10px, 50%, -50%);
+                    border-radius: 10px;
+                    transition: $transition;
+                }
+            }
+        }
+    }
+    &:hover{
+        .header{
+            h2::after {
+                    width: 70%;
+            }
+        }
+    }
+    p{
+        span.special{
+            font-weight: bold;
+            &.green{
+                color: $green-color;
+            }
+            & .orange{
+                color: $orange-color;
+            }
+        }
+    }
+}
+.read-more,
+.read-more:hover,
+.read-more:focus{
+    color: $green-color;
+    font-weight: bold;
+    cursor: pointer;
+}
+.green{
+    color: $green-color;
+}
+.orange{
+    color: $orange-color;
+}
+/* popups */
+.popup{
+    width: 100%;
+    height: 100%;
+    @include position(top, left, 0, 0, $position: fixed);
+    z-index: 1000;
+    @extend %glassy-overlay;
+    overflow-y: auto;
+    display: none;
+    overflow-x: hidden;
+    .box {
+        border-radius: 20px;
+        background-color: white;
+        width: 80%;
+        margin: 20px auto;
+        box-shadow: 0px 0px 10px 2px #ccc;
+        overflow: hidden;
+        .heading {
+            position: relative;
+            border-bottom: 1px solid black;
+
+            .exit {
+                @include position($d1-value: 50%, $d2: right, $d2-value: 20px, $y: -50%);
+                cursor: pointer;
+            }
+        }
+        ol li::marker {
+            color: $orange-color;
+            font-weight: bold;
+        }
+    }
+    &[data-popup="video"]{
+        justify-content: center;
+        align-items: center;
+        .box{
+            width: 60%;
+            height: 400px;
+            overflow: hidden;
+        }
+    }
+    &[data-popup="sectors"]{
+        .box{
+            .item{
+                background-color: #ebfbee;
+                img{
+                    width: 70px;
+                    display: block;
+                    margin: auto;
+                }
+                p{
+                    background-color: #dfeee2;
+                }
+            }
+        }
+    }
+    &[data-popup="languages"]{
+        .box{
+            position: relative;
+            right: -80%;
+            @include break-point(medium){
+                width: 50%
+            };
+            margin: 0{
+                left: auto;
+            };
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            .exit{
+                color: white;
+                background-color: black;
+                padding: 2px 5px;
+                border-radius: 2px;
+                font-size: 1rem;
+            }
+            .data{
+                ul{
+                    list-style-position: outside;
+                    &:nth-of-type(odd) {
+                        h2{
+                            color: $green-color;
+                            &::after{
+                                background-color: $green-color;
+                            }
+                        }
+                        li svg{
+                            color: $green-color;
+                        }
+                    }
+                    &:nth-of-type(even) {
+                        h2{
+                            color: $orange-color;
+                            &::after{
+                                background-color: $orange-color;
+                            }
+                        }
+                        li svg{
+                            color: $orange-color;
+                        }
+                    }
+                    h2{
+                        position: relative;
+                        width: fit-content;
+                        &::after{
+                            content: "";
+                            width: 30%;
+                            height: 3px;
+                            display: block;
+                            @include position(bottom, left, -5px, 0);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+/* up */
+.up{
+    background-color: $green-color;
+    width: fit-content;
+    border-radius: 5px 0 0 5px;
+    padding: 5px 10px;
+    @include position(top, right, 50%, -100px, 0, -50%, fixed);
+    z-index: 9999;
+    transition: $transition;
+    &:hover{
+        right: 0 !important;
+    }
+    button{
+        padding: 0;
+        color: white;
+        &:hover{
+            color: white;
+        }
+        svg{
+            padding-right: 10px;
+        }
+    }
+}
+
+/* loading */
+#loading{
+    width: 100%;
+    height: 100%;
+    @include position(top, left, 0, 0, 0, 0 , fixed);
+    @include center();
+    background: #ada996;
+    background: -webkit-linear-gradient(to right, #eaeaea, #dbdbdb, #f2f2f2, #ada996);
+    background: linear-gradient(to right, #eaeaea, #dbdbdb, #f2f2f2, #ada996);
+    z-index: 1000000;
+    @include animation(loading, 1s, infinite, alternate);
+    @include keyFrames(loading){
+        to{
+            transform: scale(1.4)
+        }
+    };
+}

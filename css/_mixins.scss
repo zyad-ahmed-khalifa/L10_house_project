@@ -1,0 +1,66 @@
+@mixin center($jc:center, $ai:center, $fd: row){
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+    flex-direction: $fd;
+}
+
+@mixin circle($w, $h){
+    width: ($w + 0px);
+    height: $h + 0px;
+    border-radius: 50%;
+}
+
+@mixin position($d1:top, $d2:left, $d1-value:initial, $d2-value:initial, $x:0, $y:0, $position:absolute){
+    position: $position;
+    #{$d1}: $d1-value;
+    #{$d2}: $d2-value;
+    transform: translate($x, $y);
+}
+
+@mixin keyFrames ($key-frame-name){
+    @keyframes #{$key-frame-name} {
+        @content;
+    }
+}
+
+@mixin animation ($name, $duration, $iteration:infinite, $alt:null){
+    animation: #{$name} #{$duration} #{$iteration} #{$alt};
+}
+
+@mixin break-point($media) {
+    @if($media =="mobile") {
+        @media (min-width: 371px){
+            @content;
+        }
+    }
+
+    @if($media =="small") {
+        @media (min-width: 577px){
+            @content;
+        }
+    }
+
+    @if($media =="medium") {
+        @media (min-width: 769px){
+            @content;
+        }
+    }
+
+    @if($media =="large") {
+        @media (min-width: 993px){
+            @content;
+        }
+    }
+
+    @if($media =="x-large") {
+        @media (min-width: 1181px){
+            @content;
+        }
+    }
+}
+
+%glassy-overlay{
+    background-color: rgb(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+}
