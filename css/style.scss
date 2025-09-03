@@ -28,14 +28,8 @@ nav {
     }
     .container {
         a.navbar-brand {
-            display: block;
             transition: 1s;
-            @include break-point(mobile) {
-                width: 20%;
-            }
-            @include break-point(medium) {
-                width: 15%;
-            }
+            width: 15%;
         }
         ul.navbar-nav {
             @include break-point(mobile){

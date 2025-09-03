@@ -241,18 +241,8 @@ nav.active-scroll .container a.navbar-brand {
   width: 12%;
 }
 nav .container a.navbar-brand {
-  display: block;
   transition: 1s;
-}
-@media (min-width: 371px) {
-  nav .container a.navbar-brand {
-    width: 20%;
-  }
-}
-@media (min-width: 769px) {
-  nav .container a.navbar-brand {
-    width: 15%;
-  }
+  width: 15%;
 }
 @media (min-width: 371px) {
   nav .container ul.navbar-nav {

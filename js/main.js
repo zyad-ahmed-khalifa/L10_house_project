@@ -48,7 +48,7 @@ $.ajax({
             $("#services .row").append(`
                 <div class="col-lg-6 mb-4">
                     <div class="item text-center rounded-3 py-3 wow ${index % 2 == 0 ? "backInLeft" : "backInRight"}" data-wow-delay="${delay}s">
-                        <img src="../img/serv/${item.icon}" alt="" class="img-fluid">
+                        <img src="${window.origin}/L10_house_project/img/serv/${item.icon}" alt="" class="img-fluid">
                         <h4>${item.title}</h4>
                         <p>${pReset(item.description.slice(0, 150))}...<span class="read-more" onclick="setDataInPopup(${index})">Read more</span></p>
                     </div>
@@ -90,7 +90,7 @@ function setDataInPopup(index) {
                     </div>
                     <div class="col-lg-6">
                         <div class="item img text-center mb-4 mb-lg-0">
-                            <img src="../img/serv-img/${data.img}" alt="" class="img-fluid rounded-3">
+                            <img src="${window.origin}/L10_house_project/img/serv-img/${data.img}" alt="" class="img-fluid rounded-3">
                         </div>
                     </div>
                 </div>
